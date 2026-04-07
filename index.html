@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Navya Jain</title>
+<style>
+:root{
+  --bg:#050a07;
+  --fg:#e2e8e4;
+  --muted:#9aa7a0;
+  --green:#4cff7a;
+}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--fg);
+}
+.wrap{
+  max-width:780px;
+  margin:0 auto;
+  padding:48px 20px 64px;
+}
+.top{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:40px;
+}
+.name{
+  font-size:14px;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.dot{
+  width:8px;
+  height:8px;
+  background:var(--green);
+  border-radius:50%;
+  box-shadow:0 0 6px var(--green);
+}
+.nav a{
+  color:var(--muted);
+  text-decoration:none;
+  margin-left:18px;
+  font-size:14px;
+}
+.hero{
+  display:flex;
+  gap:24px;
+}
+.left{flex:1}
+.hero-text{
+  font-size:20px;
+  line-height:1.6;
+  margin-bottom:16px;
+  max-width:600px;
+}
+.edu{
+  font-size:14px;
+  color:#cfd6d2;
+  margin-bottom:20px;
+}
+.avatar{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  overflow:hidden;
+  border:2px solid #163c25;
+}
+.avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.section{
+  margin-top:40px;
+}
+.section h2{
+  font-size:14px;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+.item{
+  margin-bottom:10px;
+  font-size:15px;
+  line-height:1.6;
+}
+.item strong{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<div class="top">
+  <div class="name"><div class="dot"></div>Navya Jain</div>
+  <div class="nav">
+    <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="left">
+    <div class="hero-text">
+      Interested in working on messy, interdisciplinary ML problems.
+    </div>
+    <div class="edu" id="education">
+      MS CS at Columbia University, NY · Bachelor's from Indian Institute of Technology Delhi (IITD)
+    </div>
+  </div>
+  <div class="avatar">
+    <img src="profile.jpg"/>
+  </div>
+</div>
+
+<div id="work" class="section">
+  <h2>work</h2>
+
+  <div class="item">
+    <strong>Finger removal and image inpainting.</strong>
+    Developed on-device models for finger removal and image inpainting in document scans, optimized for low latency.
+  </div>
+
+  <div class="item">
+    <strong>Legal document understanding.</strong>
+    Built a citation-aware system to verify whether evidence supports claims in long legal documents. Won Columbia Legal Hackathon; used by 10+ law students.
+  </div>
+
+  <div class="item">
+    <strong>4D endosome segmentation.</strong>
+    Built spatiotemporal segmentation and tracking for microscopy data using 3D U-Net and tracking pipelines.
+  </div>
+
+  <div class="item">
+    <strong>CFD with Fourier Neural Operator.</strong>
+    Applied operator learning to approximate fluid dynamics, enabling faster inference than traditional numerical and experimental solvers.
+  </div>
+
+</div>
+
+<div id="experience" class="section">
+  <h2>experience</h2>
+
+  <div class="item"><strong>Adobe.</strong> Machine Learning Engineer.</div>
+  <div class="item"><strong>Simons ML Center.</strong> Research Intern.</div>
+  <div class="item"><strong>Goldman Sachs.</strong> Quantitative Analyst.</div>
+  <div class="item"><strong>Monash University.</strong> ML Research.</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
