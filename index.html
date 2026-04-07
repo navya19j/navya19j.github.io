@@ -77,7 +77,6 @@ body{
   max-width:560px;
 }
 
-/* UPDATED: bigger profile image */
 .avatar{
   width:130px;
   height:130px;
@@ -98,15 +97,23 @@ body{
   color:var(--muted);
 }
 
+/* ICON LINKS */
 .links{
-  margin-top:10px;
-  font-size:14px;
+  margin-top:14px;
+  display:flex;
+  gap:14px;
 }
 
-.links a{
-  color:var(--muted);
-  margin-right:14px;
-  text-decoration:none;
+.icon{
+  width:20px;
+  height:20px;
+  opacity:0.8;
+  transition:0.2s;
+}
+
+.icon:hover{
+  opacity:1;
+  transform:translateY(-2px);
 }
 
 .section{
@@ -157,10 +164,20 @@ body{
     <div class="edu">
       MS at Columbia University, NY · Bachelor's from Indian Institute of Technology Delhi (IITD)
     </div>
+
     <div class="links">
-      <a href="mailto:navya19j@gmail.com">Email</a>
-      <a href="https://github.com/navya19j" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/navyajain5" target="_blank">LinkedIn</a>
+      <a href="mailto:navya19j@gmail.com">
+        <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg">
+      </a>
+      <a href="https://github.com/navya19j" target="_blank">
+        <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg">
+      </a>
+      <a href="https://www.linkedin.com/in/navyajain5" target="_blank">
+        <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg">
+      </a>
+      <a href="https://x.com/navwheree" target="_blank">
+        <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/x.svg">
+      </a>
     </div>
   </div>
 
