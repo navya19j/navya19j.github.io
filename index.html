@@ -3,383 +3,709 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Navya Jain</title>
+<title>Navya Jain — ML Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&display=swap" rel="stylesheet"/>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #0c0f0d;
-  --fg: #e8ede9;
-  --muted: #7a8c80;
-  --faint: #1c2a20;
-  --green: #52e07c;
-  --sans: 'Inter', system-ui, sans-serif;
-  --serif: 'Instrument Serif', Georgia, serif;
+  --bg:       #0d1117;
+  --surface:  #161b22;
+  --border:   #21262d;
+  --fg:       #e6edf3;
+  --muted:    #8b949e;
+  --faint:    #30363d;
+  --green:    #3fb950;
+  --green-hl: #56d364;
+  --blue:     #58a6ff;
+  --amber:    #d29922;
+  --serif:    'Instrument Serif', Georgia, serif;
+  --sans:     'Inter', system-ui, -apple-system, sans-serif;
 }
 
 html { scroll-behavior: smooth; }
+
 body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--sans);
-  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
-.page {
-  max-width: 640px;
+a { color: inherit; text-decoration: none; }
+
+/* ── page shell ── */
+.shell {
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 60px 28px 100px;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 0 80px;
+  align-items: start;
+}
+
+/* ── left column (sticky) ── */
+.left {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.left-top {}
+
+.avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.name {
+  font-family: var(--serif);
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--fg);
+  margin-bottom: 6px;
+  letter-spacing: -.01em;
+}
+
+.title {
+  font-size: 14px;
+  color: var(--green);
+  margin-bottom: 4px;
+  font-weight: 400;
+}
+
+.edu {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.bio {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 300px;
+  margin-bottom: 28px;
 }
 
 /* nav */
-nav {
+.side-nav {
   display: flex;
-  justify-content: flex-end;
-  gap: 24px;
-  margin-bottom: 64px;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 32px;
 }
-nav a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .15s; }
-nav a:hover { color: var(--fg); }
 
-/* hero */
-.hero {
+.side-nav a {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 28px;
-  margin-bottom: 64px;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 4px 0;
+  transition: color .15s;
 }
-.hero-left { flex: 1; min-width: 0; }
 
-.hero-name {
-  font-family: var(--serif);
-  font-size: 30px;
-  font-weight: 400;
+.side-nav a::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--faint);
+  transition: width .2s, background .15s;
+}
+
+.side-nav a:hover,
+.side-nav a.active {
   color: var(--fg);
-  line-height: 1.2;
-  margin-bottom: 5px;
 }
-.hero-sub {
+.side-nav a:hover::before,
+.side-nav a.active::before {
+  width: 40px;
+  background: var(--fg);
+}
+
+/* social icons */
+.socials {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.socials a {
+  color: var(--muted);
+  transition: color .15s, transform .15s;
+  display: flex;
+}
+.socials a:hover { color: var(--fg); transform: translateY(-2px); }
+.socials svg { width: 18px; height: 18px; fill: currentColor; }
+
+/* ── right column ── */
+.right {
+  padding: 80px 0 100px;
+}
+
+/* section */
+.section {
+  margin-bottom: 72px;
+  scroll-margin-top: 80px;
+}
+
+.section-heading {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  padding: 12px 0;
+  z-index: 1;
+}
+
+/* project cards */
+.proj-card {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  margin: 0 -20px;
+  transition: background .15s, border-color .15s;
+  cursor: default;
+}
+.proj-card:hover {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.proj-date {
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+  margin-top: 3px;
+  min-width: 60px;
+  text-align: right;
+}
+
+.proj-body { flex: 1; min-width: 0; }
+
+.proj-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.proj-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg);
+  transition: color .15s;
+}
+.proj-card:hover .proj-title { color: var(--green-hl); }
+
+.proj-links-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.proj-ext {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color .15s;
+}
+.proj-ext:hover { color: var(--fg); }
+.proj-ext svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+.proj-ext.hl { color: var(--green); }
+.proj-ext.hl:hover { color: var(--green-hl); }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.b-green  { background: rgba(63,185,80,.12);  color: var(--green-hl); border: 1px solid rgba(63,185,80,.25); }
+.b-blue   { background: rgba(88,166,255,.1);  color: var(--blue);     border: 1px solid rgba(88,166,255,.2); }
+.b-amber  { background: rgba(210,153,34,.1);  color: #e3b341;         border: 1px solid rgba(210,153,34,.2); }
+
+.proj-desc {
   font-size: 13px;
   color: var(--muted);
-  margin-bottom: 18px;
-  line-height: 1.5;
-}
-.hero-bio {
-  font-size: 14.5px;
-  color: var(--muted);
-  line-height: 1.8;
-  margin-bottom: 22px;
-}
-.hero-photo {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid var(--faint);
-  flex-shrink: 0;
-  margin-top: 4px;
+  line-height: 1.7;
+  margin-bottom: 10px;
 }
 
-/* social links */
-.links {
+.tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
-.links a {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 12px;
-  color: var(--muted);
-  text-decoration: none;
-  border: 1px solid var(--faint);
-  border-radius: 4px;
-  padding: 3px 10px;
-  transition: color .15s, border-color .15s;
-}
-.links a:hover { color: var(--fg); border-color: #2e4a38; }
-.links img { width: 12px; height: 12px; filter: invert(.45); transition: filter .15s; }
-.links a:hover img { filter: invert(1); }
-
-/* section */
-section { margin-bottom: 56px; }
-.section-label {
+.tag {
   font-size: 11px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 16px;
-}
-
-/* project rows */
-.proj-list { display: flex; flex-direction: column; }
-
-.proj {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 12px;
-  padding: 13px 0;
-  border-bottom: 1px solid var(--faint);
-}
-.proj:first-child { border-top: 1px solid var(--faint); }
-
-.proj-left { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; min-width: 0; }
-
-.proj-name {
-  font-size: 14px;
-  color: var(--fg);
-  font-weight: 400;
+  font-weight: 500;
+  color: var(--green);
+  background: rgba(63,185,80,.1);
+  border-radius: 4px;
+  padding: 2px 8px;
   white-space: nowrap;
 }
-.proj-detail {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.proj-badge {
-  font-size: 10px;
-  padding: 1px 7px;
-  border-radius: 20px;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.b-paper { background: rgba(82,224,124,.08); color: var(--green); border: 1px solid rgba(82,224,124,.2); }
-.b-win   { background: rgba(255,180,80,.07); color: #ffb84d;    border: 1px solid rgba(255,180,80,.18); }
-
-.proj-links {
-  display: flex;
-  gap: 10px;
-  flex-shrink: 0;
-}
-.pl {
-  font-size: 12px;
-  color: var(--muted);
-  text-decoration: none;
-  white-space: nowrap;
-  transition: color .15s;
-}
-.pl:hover { color: var(--fg); }
-.pl.hi { color: var(--green); }
-.pl.hi:hover { color: #7affaa; }
 
 /* experience */
-.exp-list { display: flex; flex-direction: column; }
-.exp {
+.exp-card {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
-  padding: 13px 0;
-  border-bottom: 1px solid var(--faint);
+  gap: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  margin: 0 -20px;
+  transition: background .15s, border-color .15s;
+  cursor: default;
 }
-.exp:first-child { border-top: 1px solid var(--faint); }
-.exp-left { min-width: 0; }
-.exp-co   { font-size: 14px; color: var(--fg); font-weight: 400; }
-.exp-role { font-size: 12px; color: var(--muted); margin-top: 2px; }
-.exp-date { font-size: 12px; color: #3d5244; white-space: nowrap; flex-shrink: 0; }
+.exp-card:hover {
+  background: var(--surface);
+  border-color: var(--border);
+}
 
-footer {
-  padding-top: 32px;
-  border-top: 1px solid var(--faint);
+.exp-date-col {
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+  min-width: 60px;
+  text-align: right;
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+.exp-body { flex: 1; }
+
+.exp-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg);
+  margin-bottom: 2px;
+  transition: color .15s;
+}
+.exp-card:hover .exp-title { color: var(--green-hl); }
+
+.exp-co {
   font-size: 12px;
-  color: #3d5244;
+  color: var(--muted);
+  margin-bottom: 8px;
 }
 
-@media (max-width: 500px) {
-  .page { padding: 44px 20px 80px; }
-  nav { margin-bottom: 44px; gap: 18px; }
-  .hero { flex-direction: column-reverse; gap: 16px; margin-bottom: 48px; }
-  .hero-photo { width: 72px; height: 72px; }
-  .proj { flex-direction: column; gap: 8px; }
-  .proj-links { padding-bottom: 4px; }
-  .exp { flex-direction: column; gap: 2px; }
+.exp-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+/* footer */
+.footer-note {
+  font-size: 12px;
+  color: var(--faint);
+  line-height: 1.7;
+  margin-top: 40px;
+}
+.footer-note a { color: var(--muted); transition: color .15s; }
+.footer-note a:hover { color: var(--fg); }
+
+/* ── mobile ── */
+@media (max-width: 860px) {
+  .shell {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+    gap: 0;
+  }
+  .left {
+    position: static;
+    height: auto;
+    padding: 48px 0 0;
+    margin-bottom: 48px;
+  }
+  .left-top { margin-bottom: 32px; }
+  .side-nav { flex-direction: row; flex-wrap: wrap; gap: 8px 20px; }
+  .side-nav a::before { display: none; }
+  .right { padding: 0 0 80px; }
+  .section-heading { position: static; }
+  .proj-date, .exp-date-col { display: none; }
+  .proj-card, .exp-card { margin: 0; }
 }
 </style>
 </head>
 <body>
-<div class="page">
+<div class="shell">
 
-<nav>
-  <a href="#projects">Projects</a>
-  <a href="#experience">Experience</a>
-</nav>
+  <!-- ── LEFT COLUMN ── -->
+  <aside class="left">
+    <div class="left-top">
+      <img class="avatar" src="profile.jpg" alt="Navya Jain"/>
+      <h1 class="name">Navya Jain</h1>
+      <p class="title">Machine Learning Engineer</p>
+      <p class="edu">Adobe &nbsp;·&nbsp; Columbia MS &nbsp;·&nbsp; IIT Delhi</p>
+      <p class="bio">
+        Somewhere at the intersection of engineering, research, and creativity.
+        I started in chemical engineering, wandered into ML, and now build
+        computer vision systems that power millions of document scans on-device.
+        Big fan of interdisciplinary problems and shipping things fast.
+      </p>
 
-<div class="hero">
-  <div class="hero-left">
-    <h1 class="hero-name">Navya Jain</h1>
-    <p class="hero-sub">MLE at Adobe · Columbia MS CS · IIT Delhi</p>
-    <p class="hero-bio">
-      Somewhere at the intersection of engineering, research, and creativity.
-      I started in chemical engineering, wandered into machine learning, and now
-      build computer vision systems at Adobe that power millions of document scans
-      fully on-device. Big fan of interdisciplinary problems, elegant models and
-      shipping things fast.
+      <nav class="side-nav">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+      </nav>
+    </div>
+
+    <div class="socials">
+      <!-- GitHub -->
+      <a href="https://github.com/navya19j" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/navyajain5" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <!-- Google Scholar -->
+      <a href="https://scholar.google.com/citations?user=I7rJC8gAAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar">
+        <svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 10a8 8 0 017.162 3.44L24 9.5z"/></svg>
+      </a>
+      <!-- X / Twitter -->
+      <a href="https://x.com/navwheree" target="_blank" rel="noopener" aria-label="X">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <!-- Email -->
+      <a href="mailto:nj2513@columbia.edu" aria-label="Email">
+        <svg viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-.9.732-1.636 1.636-1.636h.749L12 11.273l9.615-7.452h.749A1.636 1.636 0 0124 5.457z"/></svg>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ── RIGHT COLUMN ── -->
+  <main class="right">
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <p class="section-heading">Projects</p>
+
+      <!-- Magic Eraser -->
+      <div class="proj-card">
+        <div class="proj-date">2025</div>
+        <div class="proj-body">
+          <div class="proj-header">
+            <span class="proj-title">Magic Eraser — Adobe Scan</span>
+            <span class="badge b-blue">Shipped</span>
+          </div>
+          <p class="proj-desc">
+            Led end-to-end development of a 20MB on-device inpainting model with sub-second latency.
+            Powers Magic Eraser in Adobe Scan — directly driving $1.5–2M in revenue. Also shipped a dual-task model for geometric distortion correction and a finger detection & removal pipeline.
+          </p>
+          <div class="tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">CoreML</span>
+            <span class="tag">On-device</span>
+            <span class="tag">Image Inpainting</span>
+            <span class="tag">Quantization</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cryo-ET -->
+      <div class="proj-card">
+        <div class="proj-date">2024</div>
+        <div class="proj-body">
+          <div class="proj-header">
+            <span class="proj-title">Cryo-ET Particle Picking</span>
+          </div>
+          <p class="proj-desc">
+            General-purpose, data-independent automatic particle picking for cryo electron tomography using self-supervised modelling. Built at the Simons Machine Learning Center.
+          </p>
+          <div class="tags">
+            <span class="tag">Self-supervised</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Cryo-ET</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FNO / CFD -->
+      <div class="proj-card">
+        <div class="proj-date">2025</div>
+        <div class="proj-body">
+          <div class="proj-header">
+            <span class="proj-title">Multiphase Flow via Fourier Neural Operator</span>
+            <span class="badge b-green">Published · CEJ · 14 citations</span>
+          </div>
+          <p class="proj-desc">
+            FNO trained on small pore-scale simulations predicts single- and two-phase flow in domains up to 4× larger than seen during training. Achieved 0.03 test RMSE.
+          </p>
+          <div class="proj-links-row" style="margin-bottom:10px">
+            <a class="proj-ext hl" href="https://doi.org/10.1016/j.cej.2024.157671" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Paper
+            </a>
+            <a class="proj-ext" href="https://github.com/navya19j/CFD-FNO" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              Code
+            </a>
+          </div>
+          <div class="tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">FNO</span>
+            <span class="tag">CFD</span>
+            <span class="tag">Scientific ML</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cyclone -->
+      <div class="proj-card">
+        <div class="proj-date">2020</div>
+        <div class="proj-body">
+          <div class="proj-header">
+            <span class="proj-title">Cyclone Detection from Satellite Images</span>
+            <span class="badge b-green">Published · IEEE GRSS</span>
+          </div>
+          <p class="proj-desc">
+            Multi-stage deep learning framework for detecting cyclone formations from satellite imagery using Mask R-CNN and a CNN classifier.
+          </p>
+          <div class="tags">
+            <span class="tag">Mask R-CNN</span>
+            <span class="tag">CNN</span>
+            <span class="tag">Remote Sensing</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- VeriLaw -->
+      <div class="proj-card">
+        <div class="proj-date">2024</div>
+        <div class="proj-body">
+          <div class="proj-header">
+            <span class="proj-title">VeriLaw</span>
+            <span class="badge b-amber">Columbia Legal Hackathon — Winner</span>
+          </div>
+          <p class="proj-desc">
+            NLI system for verifying whether evidence supports claims in legal documents. Used Claude 3.5 with prompt engineering and knowledge distillation. Deployed with Flask + Jinja, Selenium for citation scraping.
+          </p>
+          <div class="proj-links-row" style="margin-bottom:10px">
+            <a class="proj-ext" href="https://github.com/navya19j/Legal-Hackathon" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              Code
+            </a>
+          </div>
+          <div class="tags">
+            <span class="tag">Claude 3.5</span>
+            <span class="tag">NLI</span>
+            <span class="tag">Distillation</span>
+            <span class="tag">Flask</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4D tracking -->
+      <div class="proj-card">
+        <div class="proj-date">2022</div>
+        <div class="proj-body">
+          <div class="proj-header">
+            <span class="proj-title">4D Endosome Segmentation & Tracking</span>
+          </div>
+          <p class="proj-desc">
+            End-to-end pipeline for automated segmentation, tracking, and visualization of endosomes in live cell LLSM data. 3D U-Net for volumetric segmentation, SORT-Kalman filter for temporal tracking. Also fine-tuned SAM with domain-specific adapters.
+          </p>
+          <div class="proj-links-row" style="margin-bottom:10px">
+            <a class="proj-ext" href="https://github.com/navya19j/4D-Segmentation" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              Code
+            </a>
+          </div>
+          <div class="tags">
+            <span class="tag">3D U-Net</span>
+            <span class="tag">SAM</span>
+            <span class="tag">SORT</span>
+            <span class="tag">Kalman Filter</span>
+            <span class="tag">Microscopy</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LabelGuard -->
+      <div class="proj-card">
+        <div class="proj-date">2025</div>
+        <div class="proj-body">
+          <div class="proj-header">
+            <span class="proj-title">LabelGuard</span>
+          </div>
+          <p class="proj-desc">
+            Android app for food label QC on factory floors. Barcode scan → on-device Qwen2-VL-2B (via MNN JNI) → rules engine validating ~40 fields against FSSAI, FDA, and Legal Metrology regulations.
+          </p>
+          <div class="proj-links-row" style="margin-bottom:10px">
+            <a class="proj-ext" href="https://github.com/navya19j/VeriFlow-AI-Compliance-Verification-App" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              Code
+            </a>
+          </div>
+          <div class="tags">
+            <span class="tag">Flutter</span>
+            <span class="tag">Kotlin JNI</span>
+            <span class="tag">Qwen2-VL</span>
+            <span class="tag">MNN</span>
+            <span class="tag">On-device</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- InstructPix2Pix -->
+      <div class="proj-card">
+        <div class="proj-date">2023</div>
+        <div class="proj-body">
+          <div class="proj-header">
+            <span class="proj-title">High-Performance AI Character Generation</span>
+          </div>
+          <p class="proj-desc">
+            Fine-tuned Stable Diffusion for instruction-based character generation. Achieved 4× training speedup with distributed and sharded training. Deployed on GKE with Kubernetes for load-balanced inference.
+          </p>
+          <div class="proj-links-row" style="margin-bottom:10px">
+            <a class="proj-ext hl" href="https://drive.google.com/file/d/1L1ROAkwNqXqVccE7U5kTxKLbAxlpjUrF/view" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Demo
+            </a>
+            <a class="proj-ext" href="https://github.com/navya19j/fantastical_p2p" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              Code
+            </a>
+          </div>
+          <div class="tags">
+            <span class="tag">Stable Diffusion</span>
+            <span class="tag">Distributed Training</span>
+            <span class="tag">GKE</span>
+            <span class="tag">Kubernetes</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <p class="section-heading">Experience</p>
+
+      <div class="exp-card">
+        <div class="exp-date-col">Feb 2025<br/>Present</div>
+        <div class="exp-body">
+          <div class="exp-title">Machine Learning Engineer · Adobe</div>
+          <div class="exp-co">San Jose, CA</div>
+          <p class="exp-desc">
+            Built the on-device inpainting model powering Magic Eraser in Adobe Scan ($1.5–2M revenue).
+            Shipped a dual-task model for geometric distortion correction (3D mesh + 2D dewarping) and a finger detection & removal pipeline.
+          </p>
+          <div class="tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">CoreML</span>
+            <span class="tag">Quantization</span>
+            <span class="tag">On-device</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-date-col">May –<br/>Aug 2024</div>
+        <div class="exp-body">
+          <div class="exp-title">ML Intern · Adobe</div>
+          <div class="exp-co">Cambridge, MA</div>
+          <p class="exp-desc">
+            YOLOv10-inspired segmentation for document edge detection in Adobe Scan. 22% faster inference, 78% fewer heuristic dependencies. Received pre-placement offer.
+          </p>
+          <div class="tags">
+            <span class="tag">YOLOv10</span>
+            <span class="tag">Segmentation</span>
+            <span class="tag">QAT</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-date-col">May 2021<br/>Dec 2022</div>
+        <div class="exp-body">
+          <div class="exp-title">ML Research Intern · Monash University</div>
+          <div class="exp-co">Melbourne, AU</div>
+          <p class="exp-desc">
+            4D segmentation and tracking of endosomes in live cell imaging. 3D U-Net + SORT-Kalman. Fine-tuned SAM with domain-specific adapters.
+          </p>
+          <div class="tags">
+            <span class="tag">3D U-Net</span>
+            <span class="tag">SAM</span>
+            <span class="tag">Kalman Filter</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-date-col">May –<br/>Jul 2022</div>
+        <div class="exp-body">
+          <div class="exp-title">Summer Quant Analyst · Goldman Sachs</div>
+          <div class="exp-co">Bengaluru, IN</div>
+          <p class="exp-desc">
+            Automated trade anomaly detection and PnL attribution modelling. Received pre-placement offer.
+          </p>
+          <div class="tags">
+            <span class="tag">Statistics</span>
+            <span class="tag">Risk Analytics</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <p class="footer-note">
+      Built with HTML & CSS · <a href="mailto:nj2513@columbia.edu">nj2513@columbia.edu</a>
     </p>
-    <div class="links">
-      <a href="https://github.com/navya19j" target="_blank" rel="noopener">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt=""/> GitHub
-      </a>
-      <a href="https://www.linkedin.com/in/navyajain5" target="_blank" rel="noopener">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt=""/> LinkedIn
-      </a>
-      <a href="https://scholar.google.com/citations?user=I7rJC8gAAAAJ" target="_blank" rel="noopener">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googlescholar.svg" alt=""/> Scholar
-      </a>
-      <a href="https://x.com/navwheree" target="_blank" rel="noopener">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/x.svg" alt=""/> X
-      </a>
-      <a href="mailto:nj2513@columbia.edu">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt=""/> Email
-      </a>
-    </div>
-  </div>
-  <img class="hero-photo" src="profile.jpg" alt="Navya Jain"/>
+
+  </main>
 </div>
 
-<section id="projects">
-  <p class="section-label">Projects</p>
-  <div class="proj-list">
-
-    <div class="proj">
-      <div class="proj-left">
-        <span class="proj-name">Magic Eraser — Adobe Scan</span>
-        <span class="proj-detail">20MB on-device inpainting model, sub-second latency. $1.5–2M revenue.</span>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="proj-left">
-        <span class="proj-name">Multiphase flow via FNO</span>
-        <span class="proj-badge b-paper">Published · CEJ 2025</span>
-        <span class="proj-detail">FNO trained on small pore-scale domains predicts flow 4× out-of-distribution. 0.03 test RMSE.</span>
-      </div>
-      <div class="proj-links">
-        <a class="pl hi" href="https://doi.org/10.1016/j.cej.2024.157671" target="_blank" rel="noopener">Paper ↗</a>
-        <a class="pl" href="https://github.com/navya19j/CFD-FNO" target="_blank" rel="noopener">Code</a>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="proj-left">
-        <span class="proj-name">Cyclone detection</span>
-        <span class="proj-badge b-paper">Published · IEEE GRSS</span>
-        <span class="proj-detail">Multi-stage deep learning pipeline using Mask R-CNN to detect cyclone formations from satellite imagery.</span>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="proj-left">
-        <span class="proj-name">Cryo-ET particle picking</span>
-        <span class="proj-detail">Self-supervised, data-independent particle picking for cryo electron tomography.</span>
-      </div>
-      <div class="proj-links">
-        <a class="pl" href="https://github.com/navya19j/4D-Segmentation" target="_blank" rel="noopener">Code</a>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="proj-left">
-        <span class="proj-name">4D endosome tracking</span>
-        <span class="proj-detail">3D U-Net segmentation + SORT-Kalman filter tracking of endosomes in live LLSM data.</span>
-      </div>
-      <div class="proj-links">
-        <a class="pl" href="https://github.com/navya19j/4D-Segmentation" target="_blank" rel="noopener">Code</a>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="proj-left">
-        <span class="proj-name">VeriLaw</span>
-        <span class="proj-badge b-win">Columbia Legal Hackathon</span>
-        <span class="proj-detail">NLI in legal documents using Claude 3.5 + distillation. Flask + Jinja, Selenium scraping.</span>
-      </div>
-      <div class="proj-links">
-        <a class="pl" href="https://github.com/navya19j/Legal-Hackathon" target="_blank" rel="noopener">Code</a>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="proj-left">
-        <span class="proj-name">Cross-lingual NLI</span>
-        <span class="proj-detail">Fine-tuned XLM-RoBERTa for NLI across 14 low-resource languages. 85.76% F1.</span>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="proj-left">
-        <span class="proj-name">LabelGuard</span>
-        <span class="proj-detail">Food label QC app for factory lines. On-device Qwen2-VL + FSSAI/FDA rules engine.</span>
-      </div>
-      <div class="proj-links">
-        <a class="pl" href="https://github.com/navya19j/VeriFlow-AI-Compliance-Verification-App" target="_blank" rel="noopener">Code</a>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="proj-left">
-        <span class="proj-name">InstructPix2Pix</span>
-        <span class="proj-detail">Fine-tuned Stable Diffusion for instruction-based image editing. 4× training speedup with sharded training.</span>
-      </div>
-      <div class="proj-links">
-        <a class="pl hi" href="https://drive.google.com/file/d/1L1ROAkwNqXqVccE7U5kTxKLbAxlpjUrF/view" target="_blank" rel="noopener">Demo</a>
-        <a class="pl" href="https://github.com/navya19j/fantastical_p2p" target="_blank" rel="noopener">Code</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="experience">
-  <p class="section-label">Experience</p>
-  <div class="exp-list">
-    <div class="exp">
-      <div class="exp-left">
-        <div class="exp-co">Adobe</div>
-        <div class="exp-role">Machine Learning Engineer</div>
-      </div>
-      <div class="exp-date">Feb 2025 –</div>
-    </div>
-    <div class="exp">
-      <div class="exp-left">
-        <div class="exp-co">Adobe</div>
-        <div class="exp-role">ML Intern</div>
-      </div>
-      <div class="exp-date">May – Aug 2024</div>
-    </div>
-    <div class="exp">
-      <div class="exp-left">
-        <div class="exp-co">Simons ML Center, Columbia</div>
-        <div class="exp-role">Research</div>
-      </div>
-      <div class="exp-date">Dec 2024</div>
-    </div>
-    <div class="exp">
-      <div class="exp-left">
-        <div class="exp-co">Goldman Sachs</div>
-        <div class="exp-role">Summer Quant Analyst</div>
-      </div>
-      <div class="exp-date">May – Jul 2022</div>
-    </div>
-    <div class="exp">
-      <div class="exp-left">
-        <div class="exp-co">Monash University</div>
-        <div class="exp-role">ML Research Intern</div>
-      </div>
-      <div class="exp-date">May 2021 – Dec 2022</div>
-    </div>
-  </div>
-</section>
-
-<footer>nj2513@columbia.edu &nbsp;·&nbsp; San Francisco</footer>
-
-</div>
+<script>
+// highlight active nav link on scroll
+const sections = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.side-nav a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
 </body>
 </html>
