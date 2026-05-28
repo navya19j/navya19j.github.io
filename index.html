@@ -11,16 +11,16 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:       #13110f;
-  --surface:  #1c1914;
-  --border:   #2e2820;
-  --fg:       #f0ebe3;
-  --muted:    #8a7d72;
-  --faint:    #2e2820;
-  --green:    #e8a838;
-  --green-hl: #f5bc50;
-  --blue:     #c084fc;
-  --amber:    #e8a838;
+  --bg:       #0a192f;
+  --surface:  #112240;
+  --border:   #1d3557;
+  --fg:       #ccd6f6;
+  --muted:    #8892b0;
+  --faint:    #172a45;
+  --green:    #64ffda;
+  --green-hl: #7fffdf;
+  --blue:     #64ffda;
+  --amber:    #ffd166;
   --serif:    'Instrument Serif', Georgia, serif;
   --sans:     'Inter', system-ui, -apple-system, sans-serif;
 }
@@ -254,9 +254,9 @@ a { color: inherit; text-decoration: none; }
   border-radius: 20px;
   white-space: nowrap;
 }
-.b-green  { background: rgba(232,168,56,.12); color: var(--green-hl); border: 1px solid rgba(232,168,56,.3); }
-.b-blue   { background: rgba(192,132,252,.1); color: var(--blue);     border: 1px solid rgba(192,132,252,.2); }
-.b-amber  { background: rgba(232,168,56,.1);  color: var(--green-hl); border: 1px solid rgba(232,168,56,.25); }
+.b-green  { background: rgba(100,255,218,.08); color: var(--green-hl); border: 1px solid rgba(100,255,218,.2); }
+.b-blue   { background: rgba(100,255,218,.08); color: var(--green-hl); border: 1px solid rgba(100,255,218,.2); }
+.b-amber  { background: rgba(255,209,102,.08); color: #ffd166;         border: 1px solid rgba(255,209,102,.2); }
 
 .proj-desc {
   font-size: 13px;
@@ -432,14 +432,7 @@ a { color: inherit; text-decoration: none; }
             Led end-to-end development of a 20MB on-device inpainting model with sub-second latency.
             Powers Magic Eraser in Adobe Scan — directly driving $1.5–2M in revenue. Also shipped a dual-task model for geometric distortion correction and a finger detection & removal pipeline.
           </p>
-          <div class="tags">
-            <span class="tag">PyTorch</span>
-            <span class="tag">CoreML</span>
-            <span class="tag">On-device</span>
-            <span class="tag">Image Inpainting</span>
-            <span class="tag">Quantization</span>
           </div>
-        </div>
       </div>
 
       <!-- LabelGuard -->
@@ -459,14 +452,7 @@ a { color: inherit; text-decoration: none; }
               Code
             </a>
           </div>
-          <div class="tags">
-            <span class="tag">Flutter</span>
-            <span class="tag">Kotlin JNI</span>
-            <span class="tag">Qwen2-VL</span>
-            <span class="tag">MNN</span>
-            <span class="tag">On-device</span>
           </div>
-        </div>
       </div>
 
       <!-- FNO / CFD -->
@@ -490,13 +476,7 @@ a { color: inherit; text-decoration: none; }
               Code
             </a>
           </div>
-          <div class="tags">
-            <span class="tag">PyTorch</span>
-            <span class="tag">FNO</span>
-            <span class="tag">CFD</span>
-            <span class="tag">Scientific ML</span>
           </div>
-        </div>
       </div>
 
       <!-- VeriLaw -->
@@ -516,13 +496,7 @@ a { color: inherit; text-decoration: none; }
               Code
             </a>
           </div>
-          <div class="tags">
-            <span class="tag">Claude 3.5</span>
-            <span class="tag">NLI</span>
-            <span class="tag">Distillation</span>
-            <span class="tag">Flask</span>
           </div>
-        </div>
       </div>
 
       <!-- 4D tracking -->
@@ -541,14 +515,7 @@ a { color: inherit; text-decoration: none; }
               Code
             </a>
           </div>
-          <div class="tags">
-            <span class="tag">3D U-Net</span>
-            <span class="tag">SAM</span>
-            <span class="tag">SORT</span>
-            <span class="tag">Kalman Filter</span>
-            <span class="tag">Microscopy</span>
           </div>
-        </div>
       </div>
 
       <!-- Cyclone -->
@@ -562,12 +529,7 @@ a { color: inherit; text-decoration: none; }
           <p class="proj-desc">
             Multi-stage deep learning framework for detecting cyclone formations from satellite imagery using Mask R-CNN and a CNN classifier.
           </p>
-          <div class="tags">
-            <span class="tag">Mask R-CNN</span>
-            <span class="tag">CNN</span>
-            <span class="tag">Remote Sensing</span>
           </div>
-        </div>
       </div>
 
       <!-- InstructPix2Pix -->
@@ -590,13 +552,7 @@ a { color: inherit; text-decoration: none; }
               Code
             </a>
           </div>
-          <div class="tags">
-            <span class="tag">Stable Diffusion</span>
-            <span class="tag">Distributed Training</span>
-            <span class="tag">GKE</span>
-            <span class="tag">Kubernetes</span>
           </div>
-        </div>
       </div>
 
     </section>
