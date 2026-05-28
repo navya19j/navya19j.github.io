@@ -11,562 +11,374 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --ink: #0c0f0d;
+  --bg: #0c0f0d;
   --fg: #e8ede9;
   --muted: #7a8c80;
   --faint: #1c2a20;
   --green: #52e07c;
-  --green-dim: rgba(82,224,124,.12);
-  --serif: 'Instrument Serif', Georgia, serif;
   --sans: 'Inter', system-ui, sans-serif;
+  --serif: 'Instrument Serif', Georgia, serif;
 }
 
 html { scroll-behavior: smooth; }
-
 body {
-  background: var(--ink);
+  background: var(--bg);
   color: var(--fg);
   font-family: var(--sans);
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─── layout ─────────────────────────────────── */
 .page {
-  max-width: 680px;
+  max-width: 640px;
   margin: 0 auto;
-  padding: 72px 28px 120px;
+  padding: 60px 28px 100px;
 }
 
-/* ─── nav ─────────────────────────────────────── */
+/* nav */
 nav {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 80px;
+  justify-content: flex-end;
+  gap: 24px;
+  margin-bottom: 64px;
 }
+nav a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .15s; }
+nav a:hover { color: var(--fg); }
 
-.nav-name {
-  font-size: 14px;
-  color: var(--muted);
-  letter-spacing: .02em;
-}
-
-.nav-links {
-  display: flex;
-  gap: 28px;
-  list-style: none;
-}
-
-.nav-links a {
-  font-size: 13px;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color .15s;
-}
-.nav-links a:hover { color: var(--fg); }
-
-/* ─── hero ────────────────────────────────────── */
+/* hero */
 .hero {
-  margin-bottom: 80px;
-}
-
-.hero-photo-row {
   display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 24px;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 28px;
+  margin-bottom: 64px;
 }
-
-.hero-avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--faint);
-  flex-shrink: 0;
-}
+.hero-left { flex: 1; min-width: 0; }
 
 .hero-name {
   font-family: var(--serif);
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 400;
   color: var(--fg);
-  margin-bottom: 4px;
-}
-
-.hero-tag {
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.hero-body {
-  font-size: 16px;
-  line-height: 1.85;
-  color: var(--muted);
-  max-width: 560px;
-  margin-bottom: 28px;
-}
-
-.social-row {
-  display: flex;
-  gap: 18px;
-  align-items: center;
-}
-
-.social-row a {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color .15s;
-}
-.social-row a:hover { color: var(--fg); }
-
-.social-row img {
-  width: 16px;
-  height: 16px;
-  filter: invert(.5);
-  transition: filter .15s;
-}
-.social-row a:hover img { filter: invert(1); }
-
-/* ─── section ─────────────────────────────────── */
-section {
-  margin-bottom: 72px;
-}
-
-.section-label {
-  font-size: 11px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 28px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.section-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--faint);
-}
-
-/* ─── work items ──────────────────────────────── */
-.work-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.work-item {
-  padding: 18px 0;
-  border-bottom: 1px solid var(--faint);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 16px;
-  align-items: baseline;
-}
-.work-item:first-child { border-top: 1px solid var(--faint); }
-
-.work-item-title {
-  font-size: 15px;
-  color: var(--fg);
-  font-weight: 400;
+  line-height: 1.2;
   margin-bottom: 5px;
 }
-
-.work-item-desc {
-  font-size: 14px;
+.hero-sub {
+  font-size: 13px;
   color: var(--muted);
-  line-height: 1.65;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+.hero-bio {
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 22px;
+}
+.hero-photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--faint);
+  flex-shrink: 0;
+  margin-top: 4px;
 }
 
-.work-item-where {
-  font-size: 12px;
-  color: #3d5244;
-  white-space: nowrap;
-  font-style: italic;
-}
-
-/* ─── projects ────────────────────────────────── */
-.projects-list {
+/* social links */
+.links {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  flex-wrap: wrap;
+  gap: 6px;
 }
+.links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid var(--faint);
+  border-radius: 4px;
+  padding: 3px 10px;
+  transition: color .15s, border-color .15s;
+}
+.links a:hover { color: var(--fg); border-color: #2e4a38; }
+.links img { width: 12px; height: 12px; filter: invert(.45); transition: filter .15s; }
+.links a:hover img { filter: invert(1); }
+
+/* section */
+section { margin-bottom: 56px; }
+.section-label {
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+/* project rows */
+.proj-list { display: flex; flex-direction: column; }
 
 .proj {
-  padding: 22px 20px;
-  border-radius: 8px;
-  background: transparent;
-  border: 1px solid transparent;
-  transition: background .2s, border-color .2s;
-  cursor: default;
-}
-.proj:hover {
-  background: #0e1812;
-  border-color: var(--faint);
-}
-
-.proj-top {
   display: flex;
-  align-items: flex-start;
   justify-content: space-between;
+  align-items: baseline;
   gap: 12px;
-  margin-bottom: 8px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--faint);
 }
+.proj:first-child { border-top: 1px solid var(--faint); }
+
+.proj-left { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; min-width: 0; }
 
 .proj-name {
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 14px;
   color: var(--fg);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.proj-pill {
-  font-size: 10.5px;
-  padding: 2px 8px;
-  border-radius: 20px;
   font-weight: 400;
   white-space: nowrap;
 }
-.pill-paper {
-  background: var(--green-dim);
-  color: var(--green);
-  border: 1px solid rgba(82,224,124,.25);
-}
-.pill-app {
-  background: rgba(100,140,255,.1);
-  color: #8aabff;
-  border: 1px solid rgba(100,140,255,.2);
-}
-.pill-hackathon {
-  background: rgba(255,180,80,.08);
-  color: #ffb84d;
-  border: 1px solid rgba(255,180,80,.18);
+.proj-detail {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
 }
 
-.proj-links-inline {
+.proj-badge {
+  font-size: 10px;
+  padding: 1px 7px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.b-paper { background: rgba(82,224,124,.08); color: var(--green); border: 1px solid rgba(82,224,124,.2); }
+.b-win   { background: rgba(255,180,80,.07); color: #ffb84d;    border: 1px solid rgba(255,180,80,.18); }
+
+.proj-links {
   display: flex;
   gap: 10px;
   flex-shrink: 0;
 }
-
-.plink {
+.pl {
   font-size: 12px;
   color: var(--muted);
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: color .15s;
   white-space: nowrap;
+  transition: color .15s;
 }
-.plink:hover { color: var(--fg); }
-.plink.highlight { color: var(--green); opacity: .85; }
-.plink.highlight:hover { opacity: 1; }
+.pl:hover { color: var(--fg); }
+.pl.hi { color: var(--green); }
+.pl.hi:hover { color: #7affaa; }
 
-.proj-stack {
-  font-size: 12px;
-  color: #3d5244;
-  margin-bottom: 8px;
-}
-
-.proj-desc {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-/* ─── experience ──────────────────────────────── */
-.exp-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.exp-item {
-  padding: 16px 0;
-  border-bottom: 1px solid var(--faint);
+/* experience */
+.exp-list { display: flex; flex-direction: column; }
+.exp {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--faint);
 }
-.exp-item:first-child { border-top: 1px solid var(--faint); }
+.exp:first-child { border-top: 1px solid var(--faint); }
+.exp-left { min-width: 0; }
+.exp-co   { font-size: 14px; color: var(--fg); font-weight: 400; }
+.exp-role { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.exp-date { font-size: 12px; color: #3d5244; white-space: nowrap; flex-shrink: 0; }
 
-.exp-place { font-size: 15px; color: var(--fg); font-weight: 400; }
-.exp-role { font-size: 13px; color: var(--muted); margin-top: 2px; }
-.exp-date { font-size: 12px; color: #3d5244; white-space: nowrap; font-style: italic; }
-
-/* ─── footer ──────────────────────────────────── */
 footer {
-  padding-top: 40px;
+  padding-top: 32px;
   border-top: 1px solid var(--faint);
   font-size: 12px;
   color: #3d5244;
 }
 
-/* ─── responsive ──────────────────────────────── */
-@media (max-width: 540px) {
-  .page { padding: 48px 20px 80px; }
-  nav { margin-bottom: 56px; }
-  .nav-links { gap: 18px; }
-  .hero-avatar { width: 56px; height: 56px; }
-  .hero-name { font-size: 22px; }
-  .work-item { grid-template-columns: 1fr; gap: 4px; }
-  .proj-top { flex-direction: column; gap: 8px; }
-  .proj-links-inline { order: -1; }
+@media (max-width: 500px) {
+  .page { padding: 44px 20px 80px; }
+  nav { margin-bottom: 44px; gap: 18px; }
+  .hero { flex-direction: column-reverse; gap: 16px; margin-bottom: 48px; }
+  .hero-photo { width: 72px; height: 72px; }
+  .proj { flex-direction: column; gap: 8px; }
+  .proj-links { padding-bottom: 4px; }
+  .exp { flex-direction: column; gap: 2px; }
 }
 </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- nav -->
-  <nav>
-    <span class="nav-name">Navya Jain</span>
-    <ul class="nav-links">
-      <li><a href="#work">Work</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-    </ul>
-  </nav>
+<nav>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+</nav>
 
-  <!-- hero -->
-  <div class="hero">
-    <div class="hero-photo-row">
-      <img class="hero-avatar" src="profile.jpg" alt="Navya Jain"/>
-      <div class="hero-intro">
-        <h1 class="hero-name">Navya Jain</h1>
-        <p class="hero-tag">ML Engineer · Adobe &nbsp;·&nbsp; Columbia MS · IIT Delhi</p>
-      </div>
-    </div>
-    <p class="hero-body">
+<div class="hero">
+  <div class="hero-left">
+    <h1 class="hero-name">Navya Jain</h1>
+    <p class="hero-sub">MLE at Adobe · Columbia MS CS · IIT Delhi</p>
+    <p class="hero-bio">
       Somewhere at the intersection of engineering, research, and creativity.
       I started in chemical engineering, wandered into machine learning, and now
       build computer vision systems at Adobe that power millions of document scans
       fully on-device. Big fan of interdisciplinary problems, elegant models and
       shipping things fast.
     </p>
-    <div class="social-row">
+    <div class="links">
       <a href="https://github.com/navya19j" target="_blank" rel="noopener">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt=""/>
-        GitHub
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt=""/> GitHub
       </a>
       <a href="https://www.linkedin.com/in/navyajain5" target="_blank" rel="noopener">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt=""/>
-        LinkedIn
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt=""/> LinkedIn
       </a>
       <a href="https://scholar.google.com/citations?user=I7rJC8gAAAAJ" target="_blank" rel="noopener">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googlescholar.svg" alt=""/>
-        Scholar
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googlescholar.svg" alt=""/> Scholar
       </a>
       <a href="https://x.com/navwheree" target="_blank" rel="noopener">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/x.svg" alt=""/>
-        X
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/x.svg" alt=""/> X
       </a>
-      <a href="mailto:navya19j@gmail.com">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt=""/>
-        Email
+      <a href="mailto:nj2513@columbia.edu">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt=""/> Email
       </a>
     </div>
   </div>
+  <img class="hero-photo" src="profile.jpg" alt="Navya Jain"/>
+</div>
 
-  <!-- work -->
-  <section id="work">
-    <p class="section-label">Selected Work</p>
-    <div class="work-list">
+<section id="projects">
+  <p class="section-label">Projects</p>
+  <div class="proj-list">
 
-      <div class="work-item">
-        <div>
-          <div class="work-item-title">On-device document understanding</div>
-          <div class="work-item-desc">Finger removal and inpainting for document scans — low-latency models that run on-device without a server.</div>
-        </div>
-        <div class="work-item-where">Adobe</div>
-      </div>
-
-      <div class="work-item">
-        <div>
-          <div class="work-item-title">Food label compliance</div>
-          <div class="work-item-desc">End-to-end QC pipeline for factory lines: barcode scan → on-device VLM → rules engine covering FSSAI, FDA, Legal Metrology.</div>
-        </div>
-        <div class="work-item-where">LabelGuard</div>
-      </div>
-
-      <div class="work-item">
-        <div>
-          <div class="work-item-title">Legal argument verification</div>
-          <div class="work-item-desc">Citation-aware system that verifies whether evidence actually supports the claims made in legal documents.</div>
-        </div>
-        <div class="work-item-where">Columbia Hackathon</div>
-      </div>
-
-      <div class="work-item">
-        <div>
-          <div class="work-item-title">4D cell tracking</div>
-          <div class="work-item-desc">Spatiotemporal segmentation and tracking of endosomes in live LLSM microscopy data using a 3D U-Net.</div>
-        </div>
-        <div class="work-item-where">Simons ML Center</div>
-      </div>
-
-      <div class="work-item">
-        <div>
-          <div class="work-item-title">Neural surrogates for fluid dynamics</div>
-          <div class="work-item-desc">FNO trained on small porous domains generalises to domains 4× larger — faster than running CFD at scale.</div>
-        </div>
-        <div class="work-item-where">Published · CEJ 2025</div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- projects -->
-  <section id="projects">
-    <p class="section-label">Open Source</p>
-    <div class="projects-list">
-
-      <div class="proj">
-        <div class="proj-top">
-          <div class="proj-name">
-            Multiphase Flow via FNO
-            <span class="proj-pill pill-paper">CEJ 2025 · 14 citations</span>
-          </div>
-          <div class="proj-links-inline">
-            <a class="plink highlight" href="https://doi.org/10.1016/j.cej.2024.157671" target="_blank" rel="noopener">
-              ↗ Paper
-            </a>
-            <a class="plink" href="https://github.com/navya19j/CFD-FNO" target="_blank" rel="noopener">
-              Code
-            </a>
-          </div>
-        </div>
-        <div class="proj-stack">PyTorch · FNO · Gerris CFD</div>
-        <div class="proj-desc">Shows that a Fourier Neural Operator trained on small pore-scale simulations can predict single- and two-phase flow in spatial domains up to 4× larger — without retraining. Published in Chemical Engineering Journal.</div>
-      </div>
-
-      <div class="proj">
-        <div class="proj-top">
-          <div class="proj-name">
-            LabelGuard
-            <span class="proj-pill pill-app">Android App</span>
-          </div>
-          <div class="proj-links-inline">
-            <a class="plink" href="https://github.com/navya19j/VeriFlow-AI-Compliance-Verification-App" target="_blank" rel="noopener">
-              Code
-            </a>
-          </div>
-        </div>
-        <div class="proj-stack">Flutter · Kotlin JNI · Qwen2-VL · MNN · FSSAI / FDA</div>
-        <div class="proj-desc">Factory-floor label QC app. Decodes the barcode, runs a VLM (on-device or Groq), validates ~40 fields against region-specific compliance rules, and returns a verdict in under 10 seconds.</div>
-      </div>
-
-      <div class="proj">
-        <div class="proj-top">
-          <div class="proj-name">
-            VeriLaw
-            <span class="proj-pill pill-hackathon">Hackathon Winner</span>
-          </div>
-          <div class="proj-links-inline">
-            <a class="plink" href="https://github.com/navya19j/Legal-Hackathon" target="_blank" rel="noopener">
-              Code
-            </a>
-          </div>
-        </div>
-        <div class="proj-stack">Claude API · Streamlit · Python</div>
-        <div class="proj-desc">Scrapes legal citations, then uses Claude to score argument strength and flag unsupported claims. Won the Columbia Law School hackathon.</div>
-      </div>
-
-      <div class="proj">
-        <div class="proj-top">
-          <div class="proj-name">4D Endosome Segmentation</div>
-          <div class="proj-links-inline">
-            <a class="plink" href="https://github.com/navya19j/4D-Segmentation" target="_blank" rel="noopener">
-              Code
-            </a>
-          </div>
-        </div>
-        <div class="proj-stack">PyTorch · 3D U-Net · Streamlit</div>
-        <div class="proj-desc">Volumetric segmentation + multi-stage bounding-box tracking of endosomes across time in LLSM microscopy data.</div>
-      </div>
-
-      <div class="proj">
-        <div class="proj-top">
-          <div class="proj-name">Jump-Start RL · Ms. Pac-Man</div>
-          <div class="proj-links-inline">
-            <a class="plink" href="https://github.com/navya19j/Jumpstart-RL-Pacman" target="_blank" rel="noopener">
-              Code
-            </a>
-          </div>
-        </div>
-        <div class="proj-stack">Stable Baselines3 · Atari · Python</div>
-        <div class="proj-desc">JSRL implementation for Atari. A guide policy bootstraps the learner; its horizon anneals as the learner improves — curriculum RL without hand-crafted rewards.</div>
-      </div>
-
-      <div class="proj">
-        <div class="proj-top">
-          <div class="proj-name">InstructPix2Pix — Fantastical Editing</div>
-          <div class="proj-links-inline">
-            <a class="plink highlight" href="https://drive.google.com/file/d/1L1ROAkwNqXqVccE7U5kTxKLbAxlpjUrF/view" target="_blank" rel="noopener">
-              ▶ Demo
-            </a>
-            <a class="plink" href="https://github.com/navya19j/fantastical_p2p" target="_blank" rel="noopener">
-              Code
-            </a>
-          </div>
-        </div>
-        <div class="proj-stack">Stable Diffusion · PyTorch · Gradio</div>
-        <div class="proj-desc">Instruction-based image editing fine-tuned on a custom celebrity character-transfer dataset. Evaluated with CLIP-based perceptual metrics.</div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- experience -->
-  <section id="experience">
-    <p class="section-label">Experience</p>
-    <div class="exp-list">
-      <div class="exp-item">
-        <div>
-          <div class="exp-place">Adobe</div>
-          <div class="exp-role">Machine Learning Engineer</div>
-        </div>
-        <div class="exp-date">2024 –</div>
-      </div>
-      <div class="exp-item">
-        <div>
-          <div class="exp-place">Simons ML Center</div>
-          <div class="exp-role">Research Intern</div>
-        </div>
-        <div class="exp-date">2023</div>
-      </div>
-      <div class="exp-item">
-        <div>
-          <div class="exp-place">Goldman Sachs</div>
-          <div class="exp-role">Quantitative Analyst</div>
-        </div>
-        <div class="exp-date">2022</div>
-      </div>
-      <div class="exp-item">
-        <div>
-          <div class="exp-place">Monash University</div>
-          <div class="exp-role">ML Research</div>
-        </div>
-        <div class="exp-date">2021</div>
+    <div class="proj">
+      <div class="proj-left">
+        <span class="proj-name">Magic Eraser — Adobe Scan</span>
+        <span class="proj-detail">20MB on-device inpainting model, sub-second latency. $1.5–2M revenue.</span>
       </div>
     </div>
-  </section>
 
-  <footer>
-    Navya Jain &nbsp;·&nbsp; San Francisco &nbsp;·&nbsp; <a href="mailto:navya19j@gmail.com" style="color:inherit;text-decoration:none;">navya19j@gmail.com</a>
-  </footer>
+    <div class="proj">
+      <div class="proj-left">
+        <span class="proj-name">Multiphase flow via FNO</span>
+        <span class="proj-badge b-paper">Published · CEJ 2025</span>
+        <span class="proj-detail">FNO trained on small pore-scale domains predicts flow 4× out-of-distribution. 0.03 test RMSE.</span>
+      </div>
+      <div class="proj-links">
+        <a class="pl hi" href="https://doi.org/10.1016/j.cej.2024.157671" target="_blank" rel="noopener">Paper ↗</a>
+        <a class="pl" href="https://github.com/navya19j/CFD-FNO" target="_blank" rel="noopener">Code</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-left">
+        <span class="proj-name">Cyclone detection</span>
+        <span class="proj-badge b-paper">Published · IEEE GRSS</span>
+        <span class="proj-detail">Multi-stage deep learning pipeline using Mask R-CNN to detect cyclone formations from satellite imagery.</span>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-left">
+        <span class="proj-name">Cryo-ET particle picking</span>
+        <span class="proj-detail">Self-supervised, data-independent particle picking for cryo electron tomography.</span>
+      </div>
+      <div class="proj-links">
+        <a class="pl" href="https://github.com/navya19j/4D-Segmentation" target="_blank" rel="noopener">Code</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-left">
+        <span class="proj-name">4D endosome tracking</span>
+        <span class="proj-detail">3D U-Net segmentation + SORT-Kalman filter tracking of endosomes in live LLSM data.</span>
+      </div>
+      <div class="proj-links">
+        <a class="pl" href="https://github.com/navya19j/4D-Segmentation" target="_blank" rel="noopener">Code</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-left">
+        <span class="proj-name">VeriLaw</span>
+        <span class="proj-badge b-win">Columbia Legal Hackathon</span>
+        <span class="proj-detail">NLI in legal documents using Claude 3.5 + distillation. Flask + Jinja, Selenium scraping.</span>
+      </div>
+      <div class="proj-links">
+        <a class="pl" href="https://github.com/navya19j/Legal-Hackathon" target="_blank" rel="noopener">Code</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-left">
+        <span class="proj-name">Cross-lingual NLI</span>
+        <span class="proj-detail">Fine-tuned XLM-RoBERTa for NLI across 14 low-resource languages. 85.76% F1.</span>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-left">
+        <span class="proj-name">LabelGuard</span>
+        <span class="proj-detail">Food label QC app for factory lines. On-device Qwen2-VL + FSSAI/FDA rules engine.</span>
+      </div>
+      <div class="proj-links">
+        <a class="pl" href="https://github.com/navya19j/VeriFlow-AI-Compliance-Verification-App" target="_blank" rel="noopener">Code</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-left">
+        <span class="proj-name">InstructPix2Pix</span>
+        <span class="proj-detail">Fine-tuned Stable Diffusion for instruction-based image editing. 4× training speedup with sharded training.</span>
+      </div>
+      <div class="proj-links">
+        <a class="pl hi" href="https://drive.google.com/file/d/1L1ROAkwNqXqVccE7U5kTxKLbAxlpjUrF/view" target="_blank" rel="noopener">Demo</a>
+        <a class="pl" href="https://github.com/navya19j/fantastical_p2p" target="_blank" rel="noopener">Code</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="experience">
+  <p class="section-label">Experience</p>
+  <div class="exp-list">
+    <div class="exp">
+      <div class="exp-left">
+        <div class="exp-co">Adobe</div>
+        <div class="exp-role">Machine Learning Engineer</div>
+      </div>
+      <div class="exp-date">Feb 2025 –</div>
+    </div>
+    <div class="exp">
+      <div class="exp-left">
+        <div class="exp-co">Adobe</div>
+        <div class="exp-role">ML Intern</div>
+      </div>
+      <div class="exp-date">May – Aug 2024</div>
+    </div>
+    <div class="exp">
+      <div class="exp-left">
+        <div class="exp-co">Simons ML Center, Columbia</div>
+        <div class="exp-role">Research</div>
+      </div>
+      <div class="exp-date">Dec 2024</div>
+    </div>
+    <div class="exp">
+      <div class="exp-left">
+        <div class="exp-co">Goldman Sachs</div>
+        <div class="exp-role">Summer Quant Analyst</div>
+      </div>
+      <div class="exp-date">May – Jul 2022</div>
+    </div>
+    <div class="exp">
+      <div class="exp-left">
+        <div class="exp-co">Monash University</div>
+        <div class="exp-role">ML Research Intern</div>
+      </div>
+      <div class="exp-date">May 2021 – Dec 2022</div>
+    </div>
+  </div>
+</section>
+
+<footer>nj2513@columbia.edu &nbsp;·&nbsp; San Francisco</footer>
 
 </div>
 </body>
