@@ -41,18 +41,8 @@ body::before {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 15% 10%, rgba(100,255,218,.06) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 40% at 80% 80%, rgba(100,255,218,.04) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: radial-gradient(rgba(100,255,218,.07) 1px, transparent 1px);
-  background-size: 32px 32px;
+    radial-gradient(ellipse 80% 60% at 0% 0%, rgba(100,255,218,.05) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(100,149,237,.04) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -85,32 +75,23 @@ a { color: inherit; text-decoration: none; }
 
 .left-top {}
 
-.identity {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
 .avatar {
-  width: 72px;
-  height: 72px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   object-fit: cover;
-  object-position: center top;
-  border: 2px solid rgba(100,255,218,.35);
-  box-shadow: 0 0 0 4px rgba(100,255,218,.06);
-  flex-shrink: 0;
+  object-position: center 15%;
+  border: 2px solid rgba(100,255,218,.3);
+  margin-bottom: 18px;
+  display: block;
 }
 
-.identity-text {}
-
 .name {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 600;
   line-height: 1.2;
   color: var(--fg);
-  margin-bottom: 4px;
+  margin-bottom: 5px;
   letter-spacing: -.02em;
 }
 
@@ -402,13 +383,9 @@ a { color: inherit; text-decoration: none; }
   <!-- ── LEFT COLUMN ── -->
   <aside class="left">
     <div class="left-top">
-      <div class="identity">
-        <img class="avatar" src="profile.jpg" alt="Navya Jain"/>
-        <div class="identity-text">
-          <h1 class="name">Navya Jain</h1>
-          <p class="title">Machine Learning Engineer</p>
-        </div>
-      </div>
+      <img class="avatar" src="profile.jpg" alt="Navya Jain"/>
+      <h1 class="name">Navya Jain</h1>
+      <p class="title">Machine Learning Engineer</p>
       <p class="edu">Adobe &nbsp;·&nbsp; Columbia MS &nbsp;·&nbsp; IIT Delhi</p>
       <p class="bio">
         I like solving hard problems. Started in chemical engineering at IIT Delhi, got
