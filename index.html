@@ -36,6 +36,29 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 10%, rgba(100,255,218,.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 80% 80%, rgba(100,255,218,.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(rgba(100,255,218,.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shell { position: relative; z-index: 1; }
+
 a { color: inherit; text-decoration: none; }
 
 /* ── page shell ── */
@@ -62,29 +85,39 @@ a { color: inherit; text-decoration: none; }
 
 .left-top {}
 
-.avatar {
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--border);
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   margin-bottom: 20px;
-  display: block;
 }
 
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 2px solid rgba(100,255,218,.35);
+  box-shadow: 0 0 0 4px rgba(100,255,218,.06);
+  flex-shrink: 0;
+}
+
+.identity-text {}
+
 .name {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 600;
   line-height: 1.2;
   color: var(--fg);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   letter-spacing: -.02em;
 }
 
 .title {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--green);
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   font-weight: 400;
 }
 
@@ -369,9 +402,13 @@ a { color: inherit; text-decoration: none; }
   <!-- ── LEFT COLUMN ── -->
   <aside class="left">
     <div class="left-top">
-      <img class="avatar" src="profile.jpg" alt="Navya Jain"/>
-      <h1 class="name">Navya Jain</h1>
-      <p class="title">Machine Learning Engineer</p>
+      <div class="identity">
+        <img class="avatar" src="profile.jpg" alt="Navya Jain"/>
+        <div class="identity-text">
+          <h1 class="name">Navya Jain</h1>
+          <p class="title">Machine Learning Engineer</p>
+        </div>
+      </div>
       <p class="edu">Adobe &nbsp;·&nbsp; Columbia MS &nbsp;·&nbsp; IIT Delhi</p>
       <p class="bio">
         I like solving hard problems. Started in chemical engineering at IIT Delhi, got
