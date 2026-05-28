@@ -10,7 +10,9 @@
   --fg:#e2e8e4;
   --muted:#9aa7a0;
   --green:#4cff7a;
+  --border:#1a2e21;
 }
+*{box-sizing:border-box;}
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
@@ -27,6 +29,7 @@ body{
 .top{
   display:flex;
   justify-content:space-between;
+  align-items:flex-start;
   margin-bottom:70px;
 }
 
@@ -62,7 +65,9 @@ body{
   text-decoration:none;
   margin-left:18px;
   font-size:14px;
+  transition:color .15s;
 }
+.nav a:hover{color:var(--fg);}
 
 .hero{
   display:flex;
@@ -83,6 +88,7 @@ body{
   border-radius:50%;
   overflow:hidden;
   border:1px solid #163c25;
+  flex-shrink:0;
 }
 
 .avatar img{
@@ -97,7 +103,6 @@ body{
   color:var(--muted);
 }
 
-/* ICON LINKS */
 .links{
   margin-top:14px;
   display:flex;
@@ -108,13 +113,10 @@ body{
   width:20px;
   height:20px;
   opacity:0.8;
-  transition:0.2s;
+  transition:.2s;
+  filter:invert(1);
 }
-
-.icon:hover{
-  opacity:1;
-  transform:translateY(-2px);
-}
+.icon:hover{opacity:1;transform:translateY(-2px);}
 
 .section{
   margin-top:60px;
@@ -124,6 +126,7 @@ body{
   font-size:14px;
   color:var(--muted);
   margin-bottom:16px;
+  letter-spacing:.04em;
 }
 
 .item{
@@ -133,8 +136,85 @@ body{
   color:#dbe2de;
 }
 
-.item strong{
+.item strong{color:#fff;}
+
+/* ── projects grid ── */
+.projects-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:4px;
+}
+
+.proj-card{
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:18px 20px;
+  background:#080f0b;
+  transition:border-color .15s,background .15s;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.proj-card:hover{
+  border-color:#2a4a35;
+  background:#0b140e;
+}
+
+.proj-title{
+  font-size:15px;
+  font-weight:600;
   color:#fff;
+  line-height:1.3;
+}
+
+.proj-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
+.tag{
+  font-size:11px;
+  color:#5a7a66;
+  border:1px solid #1e3428;
+  border-radius:3px;
+  padding:2px 7px;
+  white-space:nowrap;
+}
+
+.proj-desc{
+  font-size:13.5px;
+  color:#9aa7a0;
+  line-height:1.6;
+  flex:1;
+}
+
+.proj-links{
+  display:flex;
+  gap:14px;
+  margin-top:4px;
+}
+
+.proj-link{
+  font-size:12px;
+  color:var(--green);
+  text-decoration:none;
+  opacity:.8;
+  transition:opacity .15s;
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+.proj-link:hover{opacity:1;}
+
+/* ── responsive ── */
+@media(max-width:600px){
+  .projects-grid{grid-template-columns:1fr;}
+  .hero{flex-direction:column-reverse;gap:16px;}
+  .avatar{width:80px;height:80px;}
+  .top{flex-direction:column;gap:20px;}
+  .nav a{margin-left:0;margin-right:16px;}
 }
 </style>
 </head>
@@ -142,84 +222,195 @@ body{
 
 <div class="wrap">
 
-<div class="top">
-  <div class="name">
-    <div class="name-row">
-      <div class="dot"></div>
-      Navya Jain
+  <div class="top">
+    <div class="name">
+      <div class="name-row">
+        <div class="dot"></div>
+        Navya Jain
+      </div>
+      <div class="location">San Francisco, CA</div>
     </div>
-    <div class="location">San Francisco, CA</div>
-  </div>
-  <div class="nav">
-    <a href="#work">Work</a>
-    <a href="#experience">Experience</a>
-  </div>
-</div>
-
-<div class="hero">
-  <div>
-    <div class="hero-text">
-      <strong>Interested in working on messy, interdisciplinary ML problems.</strong>
-    </div>
-    <div class="edu">
-      MS at Columbia University, NY · Bachelor's from Indian Institute of Technology Delhi (IITD)
-    </div>
-
-    <div class="links">
-      <a href="mailto:navya19j@gmail.com">
-        <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg">
-      </a>
-      <a href="https://github.com/navya19j" target="_blank">
-        <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg">
-      </a>
-      <a href="https://www.linkedin.com/in/navyajain5" target="_blank">
-        <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg">
-      </a>
-      <a href="https://x.com/navwheree" target="_blank">
-        <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/x.svg">
-      </a>
+    <div class="nav">
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
     </div>
   </div>
 
-  <div class="avatar">
-    <img src="profile.jpg"/>
+  <div class="hero">
+    <div>
+      <div class="hero-text">
+        <strong>Interested in working on messy, interdisciplinary ML problems.</strong>
+      </div>
+      <div class="edu">
+        MS at Columbia University, NY · Bachelor's from Indian Institute of Technology Delhi (IITD)
+      </div>
+      <div class="links">
+        <a href="mailto:navya19j@gmail.com">
+          <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Email">
+        </a>
+        <a href="https://github.com/navya19j" target="_blank" rel="noopener">
+          <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub">
+        </a>
+        <a href="https://www.linkedin.com/in/navyajain5" target="_blank" rel="noopener">
+          <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
+        </a>
+        <a href="https://x.com/navwheree" target="_blank" rel="noopener">
+          <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/x.svg" alt="X">
+        </a>
+      </div>
+    </div>
+    <div class="avatar">
+      <img src="profile.jpg" alt="Navya Jain"/>
+    </div>
   </div>
-</div>
 
-<div id="work" class="section">
-  <h2>work</h2>
-
-  <div class="item">
-    <strong>Finger removal and image inpainting.</strong>
-    Developed on-device models for finger removal and image inpainting in document scans, optimized for low latency.
+  <div id="work" class="section">
+    <h2>work</h2>
+    <div class="item">
+      <strong>Finger removal and image inpainting.</strong>
+      Developed on-device models for finger removal and image inpainting in document scans, optimized for low latency.
+    </div>
+    <div class="item">
+      <strong>Legal document understanding.</strong>
+      Built a citation-aware system to verify whether evidence supports claims in long legal documents. Won Columbia Legal Hackathon; used by 10+ law students.
+    </div>
+    <div class="item">
+      <strong>4D endosome segmentation.</strong>
+      Built spatiotemporal segmentation and tracking for microscopy data using 3D U-Net and tracking pipelines.
+    </div>
+    <div class="item">
+      <strong>CFD with Fourier Neural Operator.</strong>
+      Applied operator learning to approximate fluid dynamics, enabling faster inference than traditional numerical and experimental solvers.
+    </div>
   </div>
 
-  <div class="item">
-    <strong>Legal document understanding.</strong>
-    Built a citation-aware system to verify whether evidence supports claims in long legal documents. Won Columbia Legal Hackathon; used by 10+ law students.
+  <div id="projects" class="section">
+    <h2>projects</h2>
+    <div class="projects-grid">
+
+      <div class="proj-card">
+        <div class="proj-title">LabelGuard</div>
+        <div class="proj-tags">
+          <span class="tag">Flutter · Android</span>
+          <span class="tag">On-device VLM</span>
+          <span class="tag">FSSAI · FDA</span>
+        </div>
+        <div class="proj-desc">
+          Food label QC app for factory lines. Scans a product label, runs a VLM (Groq cloud or on-device Qwen2-VL-2B via MNN JNI), and validates ~40 fields against FSSAI, FDA, Legal Metrology, BIS, and BRCGS rules. Pass/fail verdict in under 10 s.
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/navya19j/VeriFlow-AI-Compliance-Verification-App" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-title">VeriLaw</div>
+        <div class="proj-tags">
+          <span class="tag">Claude API</span>
+          <span class="tag">Streamlit</span>
+          <span class="tag">Legal AI</span>
+        </div>
+        <div class="proj-desc">
+          AI-powered legal argument verifier. Scrapes cited sources, scores argument strength with Claude, validates citations, and suggests improvements. Won Columbia Law School hackathon; adopted by 10+ law students.
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/navya19j/Legal-Hackathon" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-title">4D Endosome Segmentation</div>
+        <div class="proj-tags">
+          <span class="tag">3D U-Net</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">Microscopy</span>
+        </div>
+        <div class="proj-desc">
+          Automated segmentation and tracking of endosomes in live cell images from Lattice Light Sheet Microscopy. 3D U-Net for volumetric segmentation + multi-stage bounding-box tracker + Streamlit visualization app.
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/navya19j/4D-Segmentation" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-title">CFD × Fourier Neural Operators</div>
+        <div class="proj-tags">
+          <span class="tag">FNO</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">Navier-Stokes</span>
+        </div>
+        <div class="proj-desc">
+          Neural surrogates for fluid dynamics. Coupled Gerris CFD simulations with Fourier Neural Operators (arXiv:2010.08895) to predict velocity and pressure fields — faster inference than classical solvers across three geometric configurations.
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/navya19j/Coupling-CFD-with-FNO" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-title">Jump-Start RL for Pac-Man</div>
+        <div class="proj-tags">
+          <span class="tag">Stable Baselines3</span>
+          <span class="tag">Atari</span>
+          <span class="tag">RL</span>
+        </div>
+        <div class="proj-desc">
+          Implementation of Jump-Start Reinforcement Learning (JSRL, arXiv:2204.02372) on Atari Ms. Pac-Man. A reusable SB3 wrapper bootstraps a learner with a guide policy, annealing the guide's horizon as the learner improves.
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/navya19j/Jumpstart-RL-Pacman" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-title">InstructPix2Pix — Fantastical Editing</div>
+        <div class="proj-tags">
+          <span class="tag">Stable Diffusion</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">Gradio</span>
+        </div>
+        <div class="proj-desc">
+          AML final project: instruction-based image editing with InstructPix2Pix. Extended the original model with a custom celebrity character-transfer dataset and a Gradio demo. Evaluated with CLIP-based metrics.
+        </div>
+        <div class="proj-links">
+          <a class="proj-link" href="https://github.com/navya19j/fantastical_p2p" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a class="proj-link" href="https://drive.google.com/file/d/1L1ROAkwNqXqVccE7U5kTxKLbAxlpjUrF/view" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Demo
+          </a>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <div class="item">
-    <strong>4D endosome segmentation.</strong>
-    Built spatiotemporal segmentation and tracking for microscopy data using 3D U-Net and tracking pipelines.
+  <div id="experience" class="section">
+    <h2>experience</h2>
+    <div class="item"><strong>Adobe.</strong> Machine Learning Engineer.</div>
+    <div class="item"><strong>Simons ML Center.</strong> Research Intern.</div>
+    <div class="item"><strong>Goldman Sachs.</strong> Quantitative Analyst.</div>
+    <div class="item"><strong>Monash University.</strong> ML Research.</div>
   </div>
-
-  <div class="item">
-    <strong>CFD with Fourier Neural Operator.</strong>
-    Applied operator learning to approximate fluid dynamics, enabling faster inference than traditional numerical and experimental solvers.
-  </div>
-
-</div>
-
-<div id="experience" class="section">
-  <h2>experience</h2>
-
-  <div class="item"><strong>Adobe.</strong> Machine Learning Engineer.</div>
-  <div class="item"><strong>Simons ML Center.</strong> Research Intern.</div>
-  <div class="item"><strong>Goldman Sachs.</strong> Quantitative Analyst.</div>
-  <div class="item"><strong>Monash University.</strong> ML Research.</div>
-
-</div>
 
 </div>
 
