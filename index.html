@@ -40,11 +40,14 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 0% 0%, rgba(100,255,218,.05) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(100,149,237,.04) 0%, transparent 50%);
+  background: radial-gradient(
+    600px circle at var(--mx, 50%) var(--my, 30%),
+    rgba(100,255,218,.06) 0%,
+    transparent 70%
+  );
   pointer-events: none;
   z-index: 0;
+  transition: background .1s ease;
 }
 
 .shell { position: relative; z-index: 1; }
@@ -631,6 +634,12 @@ a { color: inherit; text-decoration: none; }
 </div>
 
 <script>
+// cursor spotlight
+document.addEventListener('mousemove', e => {
+  document.body.style.setProperty('--mx', e.clientX + 'px');
+  document.body.style.setProperty('--my', e.clientY + 'px');
+});
+
 // highlight active nav link on scroll
 const sections = document.querySelectorAll('section[id]');
 const links = document.querySelectorAll('.side-nav a');
